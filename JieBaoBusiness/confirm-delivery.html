@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="utf-8">
+		<meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport" />
+		<meta name="apple-mobile-web-app-capable" content="yes" />
+		<meta name="apple-mobile-web-app-status-bar-style" content="black" />
+		<meta name="format-detection" content="telephone=no, email=no" />
+		<title>填写物流</title>
+		<link rel="stylesheet" type="text/css" href="css/confirm-delivery.css" />
+		<link rel="stylesheet" type="text/css" href="css/base.css" />
+		<script src="js/jquery.min.js" type="text/javascript" charset="utf-8"></script>
+		<script src="js/base.js" type="text/javascript" charset="utf-8"></script>
+		<script src="js/loading.js" type="text/javascript" charset="utf-8"></script>
+	</head>
+
+	<body>
+		<div id="header">
+			<a href="javascript:history.go(-1)"><img src="images/left-arrow.png" class="left-arrow"></a>发货信息</div>
+		<div class="content">
+			<div class="enter-number">请输入快递单号</div>
+			<input type="text" class="tracking-number" />
+			<div class="tip">注：请仔细核对快递单号，确认发货后，快递单号将不可修改。如有疑问请致电美豹客服 400-000-0000</div>
+			<button class="confirm-delivery" onclick="confirm()">确认发货</button>
+		</div>
+		<div class="mask"></div>
+		<div class="pop-up">
+			<div class="message">已通知用户发货了</div>
+			<div class="confirm" onclick="hide()">知道了</div>
+		</div>
+	</body>
+	<script src="http://code.jquery.com/jquery-latest.js"></script>
+	<script type="text/javascript">
+		function confirm() {
+			$(".mask").show();
+			$(".pop-up").show();
+		}
+	</script>
+
+</html>

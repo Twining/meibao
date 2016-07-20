@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="utf-8">
+		<meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport" />
+		<meta name="apple-mobile-web-app-capable" content="yes" />
+		<meta name="apple-mobile-web-app-status-bar-style" content="black" />
+		<meta name="format-detection" content="telephone=no, email=no" />
+		<link rel="stylesheet" type="text/css" href="css/transaction-management.css" />
+		<title>交易管理</title>
+		<script src="js/jquery.min.js" type="text/javascript" charset="utf-8"></script>
+		<script src="js/base.js" type="text/javascript" charset="utf-8"></script>
+		<script src="js/loading.js" type="text/javascript" charset="utf-8"></script>
+		<script src="js/angular.min.js" type="text/javascript" charset="utf-8"></script>
+	</head>
+
+	<body ng-app="transaction_management" ng-controller="getOrderNum">
+		<div id="header">交易管理</div>
+		<div class="content">
+			<a href="order-list.html">
+				<div class="content-item">
+					<div class="content-item-icon"><img src="images/icon-1.png" class="icon" />
+						<span class="num-circle">{{new_order}}</span>
+					</div>
+					<div class="content-item-text">新增订单</div>
+					<div class="content-item-arrow"><img src="images/right-arrow.png" class="arrow" /></div>
+				</div>
+			</a>
+			<a href="sale-orders.html">
+				<div class="content-item">
+					<div class="content-item-icon"><img src="images/icon-2.png" class="icon" />
+						<span class="num-circle1">{{sale_order}}</span>
+					</div>
+					<div class="content-item-text">售后订单</div>
+					<div class="content-item-arrow"><img src="images/right-arrow.png" class="arrow" /></div>
+				</div>
+			</a>
+			<a href="order-tracking.html">
+				<div class="content-item">
+					<div class="content-item-icon"><img src="images/icon-3.png" class="icon" />
+					</div>
+					<div class="content-item-text">订单查询</div>
+					<div class="content-item-arrow"><img src="images/right-arrow.png" class="arrow" /></div>
+				</div>
+			</a>
+			<a href="sales-data.html">
+				<div class="content-item">
+					<div class="content-item-icon"><img src="images/icon-4.png" class="icon" />
+					</div>
+					<div class="content-item-text">今日销售</div>
+					<div class="content-item-arrow"><img src="images/right-arrow.png" class="arrow" /></div>
+				</div>
+			</a>
+		</div>
+		<div id="footer">
+			<div class="footer-item">
+				<div class="footer-item-img">
+					<img src="images/icon-transaction.png" />
+				</div>
+				<div class="footer-item-text red-text1">交易管理</div>
+			</div>
+			<div class="footer-item">
+				<div class="footer-item-img">
+					<img src="images/icon-product.png" />
+				</div>
+				<div class="footer-item-text">商品管理</div>
+			</div>
+		</div>
+	</body>
+	<script type="text/javascript">
+		$(".content .content-item-text").each(function() {
+			$(this).mouseover(function() {
+				$(this).addClass("red-text1");
+				$(this).parent().parent().siblings().find(".content-item-text").removeClass("red-text1");
+			})
+		})
+		if(getcookie("token") != "") {
+			var transaction_management = angular.module('transaction_management', []);
+			transaction_management.controller('getOrderNum', function($http, $scope) {
+				$http.get(server + "api/order/getOrderNum?accessToken=" + getcookie("token") + must_send).success(function(data) {
+					if(data.code == 0) {
+						if(data.data.newOrdersNum != 0) {
+							$scope.new_order = data.data.newOrdersNum;
+						}
+						if(data.data.cancleOrdersNum != 0) {
+							$scope.sale_order = data.data.cancleOrdersNum;
+						}
+					} else {
+						meibao_alert(data.message);
+					}
+				});
+			});
+		}
+	</script>
+
+</html>

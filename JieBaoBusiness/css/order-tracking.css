@@ -1,0 +1,131 @@
+.menu {
+	position: absolute;
+	top: 0px;
+	width: 100%;
+	padding: 0;
+	margin: 0;
+	margin-top: 90px;
+	height: 88px;
+	list-style: none;
+}
+
+.menu li {
+	width: 33.3%;
+	float: left;
+	height: 88px;
+	background-color: #FFFFFF;
+	font-size: 28px;
+	line-height: 88px;
+	box-sizing: border-box;
+}
+
+.current {
+	border-bottom: 2px solid #FD363B;
+}
+
+.search-input {
+	margin-top: 220px;
+	padding-left: 24px;
+	padding-right: 24px;
+}
+
+.order-search {
+	-webkit-appearance: none;
+	-webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+	padding: 0;
+	height: 88px;
+	width: calc(100% - 96px);
+	background-image: url(../images/search-gray.png);
+	background-size: auto 48px;
+	background-repeat: no-repeat;
+	background-position: 24px 20px;
+	padding-left: 96px;
+	border: none;
+	background-color: #666666;
+	font-size: 36px;
+	color: #FFFFFF;
+}
+
+.search-input p {
+	font-size: 24px;
+	text-align: left;
+	color: #999999;
+}
+
+.choose-date-title {
+	margin: 40px auto;
+	font-size: 36px;
+}
+
+.choose-date {
+	height: 200px;
+	width: calc(100% - 48px);
+	margin: 0 auto;
+}
+
+.start-date {
+	width: calc(50% - 20px);
+	height: 200px;
+	margin-right: 20px;
+	float: left;
+}
+
+.start-date-content {
+	background-image: url(../images/calendar.png);
+	background-size: 100% 100%;
+	background-repeat: no-repeat;
+	height: 100%;
+	width: 100%;
+}
+
+.end-date {
+	width: calc(50% - 20px);
+	margin-left: 20px;
+	height: 200px;
+	float: left;
+}
+
+.end-date-content {
+	background-image: url(../images/calendar.png);
+	background-size: 100% 100%;
+	background-repeat: no-repeat;
+	height: 100%;
+	width: 100%;
+}
+
+.select-date {
+	padding: 50px 0 10px 0;
+	width: calc(100% - 60px);
+	margin: 0 auto;
+	text-align: left;
+	font-size: 36px;
+	color: #999999;
+	border-bottom: 1px dotted #DDDDDD;
+}
+
+.date {
+	padding-top: 20px;
+	width: calc(100% - 60px);
+	margin: 0 auto;
+	font-size: 30px;
+	-webkit-appearance: none;
+	border: none;
+	background-image: url(../images/solid-down-arrow.png);
+	background-size: auto 20px;
+	background-repeat: no-repeat;
+	background-position: 95% 30px;
+	height: 40px;
+	line-height: 40px;
+}
+
+.start-search {
+	width: calc(100% - 48px);
+	height: 90px;
+	margin-top: 100px;
+	border: none;
+	background-color: #FB7292;
+	border-radius: 10px;
+	color: #fff;
+	font-size: 36px;
+	font-weight: 400;
+}

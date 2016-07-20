@@ -1,0 +1,28 @@
+<!doctype html>
+<html>
+
+	<head>
+		<meta charset="utf-8">
+		<meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport" />
+		<meta name="apple-mobile-web-app-capable" content="yes" />
+		<meta name="apple-mobile-web-app-status-bar-style" content="black" />
+		<meta name="format-detection" content="telephone=no, email=no" />
+		<!--<link rel="stylesheet" type="text/css" href="css/login.css" />-->
+		<link rel="stylesheet" type="text/css" href="css/login.css" />
+		<script src="js/jquery.min.js" type="text/javascript" charset="utf-8"></script>
+		<script src="js/base.js" type="text/javascript" charset="utf-8"></script>
+		<script src="js/loading.js" type="text/javascript" charset="utf-8"></script>
+		<title>登录</title>
+	</head>
+
+	<body>
+		<img src="images/close.png" class="close" />
+		<div class="content" ng-app="login" ng-controller="getmobile">
+			<input type="text" placeholder="输入手机号码" class="mobile" id="mobile" value="17004964410"/>
+			<div class="code"><input type="number" placeholder="验证码" class="input-code" id="code" />
+				<input type="button" value="发送验证码" class="send-code" onclick="settime(this)" /></div>
+			<input type="button" value="登录" id="login" />
+		</div>
+	</body>
+	<script type="text/javascript" src="js/login.js"></script>
+</html>
