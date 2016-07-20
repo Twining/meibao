@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="utf-8">
+		<meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport" />
+		<meta name="apple-mobile-web-app-capable" content="yes" />
+		<meta name="apple-mobile-web-app-status-bar-style" content="black" />
+		<meta name="format-detection" content="telephone=no, email=no" />
+		<link rel="stylesheet" type="text/css" href="css/base.css" />
+		<title>提现详情</title>
+		<script src="js/jquery.min.js" type="text/javascript" charset="utf-8"></script>
+		<script src="js/base.js" type="text/javascript" charset="utf-8"></script>
+		<script src="js/loading.js" type="text/javascript" charset="utf-8"></script>
+		<style type="text/css">
+			.withdrawal-amount {
+				margin-top: 110px;
+				padding-left: 24px;
+				padding-right: 24px;
+				width: calc(100% - 48px);
+				height: 160px;
+				line-height: 160px;
+				background-color: #FFFFFF;
+			}
+			
+			.withdrawal-amount .text1 {
+				width: 50%;
+				float: left;
+				text-align: left;
+				font-size: 36px;
+			}
+			
+			.withdrawal-amount .text2 {
+				width: 50%;
+				float: left;
+				text-align: right;
+				color: #FD363B;
+				font-size: 48px;
+			}
+			
+			.withdrawal-amount .text2 span {
+				font-size: 36px;
+				padding-right: 14px;
+			}
+			
+			.withdrawal-record {
+				margin-top: 20px;
+				padding-left: 24px;
+				padding-right: 24px;
+				width: calc(100% - 48px);
+				background-color: #FFFFFF;
+			}
+			
+			.withdrawal-record ul {
+				list-style: none;
+				margin: 0;
+				padding: 0;
+			}
+			
+			.withdrawal-record li {
+				width: 100%;
+				font-size: 28px;
+				text-align: left;
+			}
+			
+			.withdrawal-record li:first-child .time {
+				border-top: none;
+			}
+			
+			.withdrawal-record li .time {
+				border-top: 1px solid #DDDDDD;
+				width: 100%;
+				color: #666666;
+				padding-top: 30px;
+				margin-bottom: 20px;
+			}
+			
+			.withdrawal-record li .amount {
+				width: 100%;
+				padding-bottom: 30px;
+			}
+		</style>
+	</head>
+
+	<body>
+		<div id="header">
+			<a href="javascript:history.go(-1)"><img src="images/left-arrow.png" class="left-arrow"></a>提现详情</div>
+		<div class="withdrawal-amount">
+			<div class="text1">提现中的总金额</div>
+			<div class="text2"><span>￥</span>3000</div>
+		</div>
+		<div class="withdrawal-record">
+			<ul>
+				<li>
+					<div class="time">提现时间：2016-06-23 19:10:56</div>
+					<div class="amount">提现额度：￥2500</div>
+				</li>
+				<li>
+					<div class="time">提现时间：2016-06-23 17:10:56</div>
+					<div class="amount">提现额度：￥200</div>
+				</li>
+				<li>
+					<div class="time">提现时间：2016-06-23 15:26:21</div>
+					<div class="amount">提现额度：￥200</div>
+				</li>
+				<li>
+					<div class="time">提现时间：2016-06-23 13:45:07</div>
+					<div class="amount">提现额度：￥100</div>
+				</li>
+			</ul>
+		</div>
+	</body>
+
+</html>

@@ -1,0 +1,102 @@
+html {
+	font-size: 62.5%;
+	/* 10÷16=62.5% */
+	padding: 0;
+	margin: 0;
+}
+
+body {
+	font-family: "Microsoft YaHei", 微软雅黑, Arial;
+	text-align: center;
+	font-size: 14px;
+	background-color: #EEEEEE;
+	margin: 0;
+	padding: 0;
+	color: #333333;
+}
+
+input {
+	padding: 0;
+	margin: 0;
+}
+
+div,input,button {
+	-webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+}
+
+
+/*a,
+a:hover,
+a:visited {
+	text-decoration: none;
+	color: #333333;
+	-webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+}*/
+
+a:link {
+	color: #333333;
+	-webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+	text-decoration: none;
+}
+
+a:visited {
+	color: #333333;
+	-webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+	text-decoration: none;
+}
+
+a:hover {
+	color: #333333;
+	-webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+	text-decoration: none;
+}
+
+a:active {
+	color: #333333;
+	-webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+	text-decoration: none;
+}
+
+
+/*red-text*/
+
+#header {
+	color: #333333;
+	height: 88px;
+	width: 100%;
+	border-bottom: 2px solid #999999;
+	line-height: 88px;
+	font-size: 36px;
+	position: fixed;
+	top: 0;
+	z-index: 10;
+	background-color: #ffffff;
+}
+
+.left-arrow {
+	position: absolute;
+	float: left;
+	height: 32px;
+	top: 28px;
+	left: 24px;
+}
+
+.loading {
+	position: absolute;
+	/*cursor: wait;*/
+	left: 0;
+	right: 0;
+	top: 0;
+	bottom: 0;
+	margin: auto;
+	width: 300px;
+	height: 60px;
+	line-height: 60px;
+	padding-left: 50px;
+	padding-right: 5px;
+	background: #fff url(..images/loading.gif) no-repeat scroll 0px 5px;
+	background-size: 50px 50px;
+	border: 2px solid #95B8E7;
+	color: #696969;
+	font-family: 'Microsoft YaHei';
+}
