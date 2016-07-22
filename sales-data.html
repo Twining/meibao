@@ -47,13 +47,16 @@
 			<div style="clear: both;"></div>
 		</div>
 		<div class="withdraw-content">
-			<div class="withdraw" style="border-bottom: 1px solid #DDDDDD;">
+			<div class="withdraw" style="border-bottom: 1px solid #DDDDDD;" ng-switch="withdrawalAmount">
 				<div class="withdraw1">
 					<div class="withdraw1-1">可提现金额</div>
 					<div class="withdraw1-2">￥{{data.withdrawalAmount}}</div>
 				</div>
-				<div class="withdraw2">
+				<div class="withdraw2" ng-switch-default>
 					<button onclick="withdraw()">申请提现</button>
+				</div>
+				<div class="withdraw2" ng-switch-when="0">
+					<button onclick="meibao_alert('可提现金额不足')">申请提现</button>
 				</div>
 				<div style="clear: both;"></div>
 			</div>
@@ -75,7 +78,7 @@
 				</div>
 				<div class="confirm">
 					<div class="cancel" onclick="cancel()">取消</div>
-					<div class="go-on" onclick="apply_immediately()">立即申请</div>
+					<div class="go-on" ng-click="apply_immediately()">立即申请</div>
 					<div style="clear:both;"></div>
 				</div>
 			</div>
@@ -112,20 +115,31 @@
 			$(".pop-up").hide();
 		}
 
-		function apply_immediately() {
+		/*function apply_immediately() {
 			cancel();
 			window.location.href = "withdraw-details.html";
-		}
+		}*/
 		if(getcookie("token") != "") {
 			var saladata = angular.module('saladata', []);
 			saladata.controller('getSaleData', function($http, $scope) {
 				$http.get(server + "api/order/getSalesDate?accessToken=" + getcookie("token") + must_send).success(function(data) {
 					if(data.code == 0) {
 						$scope.data = data.data;
+						$scope.withdrawalAmount = parseInt(data.data.withdrawalAmount);
 					} else {
 						meibao_alert(data.message);
 					}
 				});
+				$scope.apply_immediately = function() {
+					$http.post(server + "api/order/applyWithdraw?accessToken=" + getcookie("token") + must_send).success(function(data) {
+						cancel();
+						if(data.code == 0) {
+							window.location.href = "withdraw-details.html";
+						} else {
+							meibao_alert(data.message);
+						}
+					});
+				}
 			});
 		} else {
 			window.location.href = "login.html";

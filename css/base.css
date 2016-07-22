@@ -245,8 +245,8 @@ a:hover {
 
 #alert .message {
 	height: 84px;
-	border-bottom: 1px solid #DDDDDD;
-	/*line-height: 168px;*/
+	border-bottom: 2px solid #DDDDDD;
+	line-height: 84px;
 	color: #333333;
 	font-size: 18px;
 	font-weight: 600;
@@ -254,10 +254,11 @@ a:hover {
 	display: table;
 	border-top-left-radius: 10px;
 	border-top-right-radius: 10px;
+	padding-bottom: 0px;
+	box-sizing: border-box;
 }
 
 #alert .message div {
-	border-top-radius: 10px;
 	vertical-align: middle;
 	display: table-cell;
 }

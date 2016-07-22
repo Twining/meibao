@@ -10,7 +10,6 @@ function settime(obj) {
 		return;
 	}
 	$.post(server + "api/user/sendSms?mobile=" + $("#mobile").val() + must_send, function(data) {
-		console.log(data);
 		if(data.code == 0) {
 			send(obj);
 		} else {
@@ -57,7 +56,6 @@ function check() {
 $("#login").click(function() {
 	if(check()) {
 		$.post(server + "api/user/login?mobile=" + $("#mobile").val() + "&smsCode=" + $("#code").val() + must_send, function(data) {
-			console.log(data);
 			if(data.code == 0) {
 				addcookie("token", data.data.token);
 				window.location.href = "transaction-management.html";

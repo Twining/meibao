@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html ng-app="withdraw">
 
 	<head>
 		<meta charset="utf-8">
@@ -8,40 +8,47 @@
 		<meta name="apple-mobile-web-app-status-bar-style" content="black" />
 		<meta name="format-detection" content="telephone=no, email=no" />
 		<link rel="stylesheet" type="text/css" href="css/base.css" />
-		<link rel="stylesheet" type="text/css" href="css/withdraw-details.css"/>
+		<link rel="stylesheet" type="text/css" href="css/withdraw-details.css" />
 		<title>提现详情</title>
 		<script src="js/jquery.min.js" type="text/javascript" charset="utf-8"></script>
 		<script src="js/base.js" type="text/javascript" charset="utf-8"></script>
 		<script src="js/loading.js" type="text/javascript" charset="utf-8"></script>
+		<script src="js/angular.min.js" type="text/javascript" charset="utf-8"></script>
 	</head>
 
-	<body>
+	<body ng-controller="getWithdrawList">
 		<div id="header">
-			<a href="javascript:history.go(-1)"><div class="back"><img src="images/left-arrow.png" class="left-arrow"></div></a>提现详情</div>
+			<a href="javascript:history.go(-1)">
+				<div class="back"><img src="images/left-arrow.png" class="left-arrow"></div>
+			</a>提现详情</div>
 		<div class="withdrawal-amount">
 			<div class="text1">提现中的总金额</div>
-			<div class="text2"><span>￥</span>3000</div>
+			<div class="text2"><span>￥</span>{{data.totalWithdrawalAmount}}</div>
 		</div>
 		<div class="withdrawal-record">
 			<ul>
-				<li>
-					<div class="time">提现时间：2016-06-23 19:10:56</div>
-					<div class="amount">提现额度：￥2500</div>
-				</li>
-				<li>
-					<div class="time">提现时间：2016-06-23 17:10:56</div>
-					<div class="amount">提现额度：￥200</div>
-				</li>
-				<li>
-					<div class="time">提现时间：2016-06-23 15:26:21</div>
-					<div class="amount">提现额度：￥200</div>
-				</li>
-				<li>
-					<div class="time">提现时间：2016-06-23 13:45:07</div>
-					<div class="amount">提现额度：￥100</div>
+				<li ng-repeat="data in data.merchantDrawMoneyList">
+					<div class="time">提现时间：{{data.createTime}}</div>
+					<div class="amount">提现额度：￥{{data.amount}}</div>
 				</li>
 			</ul>
 		</div>
 	</body>
+	<script type="text/javascript">
+		if(getcookie("token") != "") {
+			var withdraw = angular.module('withdraw', []);
+			withdraw.controller('getWithdrawList', function($http, $scope) {
+				$http.get(server + "api/order/queryWithdrawDetails?accessToken=" + getcookie("token") + must_send).success(function(data) {
+					if(data.code == 0) {
+						$scope.data = data.data;
+					} else {
+						meibao_alert(data.message);
+					}
+				});
+			});
+		} else {
+			window.location.href = "login.html";
+		}
+	</script>
 
 </html>

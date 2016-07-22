@@ -103,27 +103,52 @@
 			pullDownAction: refresh,
 			pullUpAction: loadMore
 		});
-		var generatedCount = 0;
+		var generatedCount = 1;
+		var maxPageNo = 2;
 
 		function refresh() {
 			setTimeout(function() { // <-- Simulate network congestion, remove setTimeout from production!
-				window.location.reload();//刷新页面
+				window.location.reload(); //刷新页面
 				wrapper.refresh(); /****remember to refresh after  action completed！ ---yourId.refresh(); ----| ****/
 			}, 1000);
 
 		}
 
 		function loadMore() {
-			setTimeout(function() { // <-- Simulate network congestion, remove setTimeout from production!
-				var el, li, i;
-				el = document.querySelector("#wrapper ul");
-				for(i = 0; i < 2; i++) {
-					li = document.createElement('li');
-					li.appendChild(document.createTextNode('async row ' + (++generatedCount)));
-					el.appendChild(li, el.childNodes[0]);
-				}
-				wrapper.refresh(); /****remember to refresh after action completed！！！   ---id.refresh(); --- ****/
-			}, 1000);
+			if(generatedCount < maxPageNo) {
+				setTimeout(function() { // <-- Simulate network congestion, remove setTimeout from production!
+					$.get(server + "api/order/serchOrderList?accessToken=" + getcookie("token") + "&queryType=3&searchContent=" + getUrlParam(url, 'searchContent') + "&beginTime=" + getUrlParam(url, 'beginTime') + "&endTime=" + getUrlParam(url, 'endTime') + "&pageNo=" + (generatedCount + 1) + must_send).success(function(data) {
+						if(data.code == 0) {
+							if(data.data.length != 0) {
+								generatedCount++;
+								var orderList = data.data;
+								var html = ""
+								for(var i = 0; i < orderList.length; i++) {
+									html += '<li><a href="order-details.html?id=' + orderList[i].orderId + '">';
+									html += '<div class="new-order-content-item"><div class="new-order-content-top"><div class="content-item-left">';
+									html += '<img src="' + orderList[i].orderPic + '"></div><div class="content-item-center">';
+									html += '<div class="content-item-center-top1">订单编号：' + orderList[i].orderNumber + '</div>';
+									html += '<div class="content-item-center-top2">下单时间：' + orderList[i].createTime + '</div>';
+									html += '<div class="content-item-center-text ptop10">收货人：' + orderList[i].receivedName + '&nbsp;' + orderList[i].receivedPhone + '</div>';
+									html += '<div class="content-item-center-text">收货地址：' + orderList[i].receivedAddress + '</div>';
+									html += '<div class="content-item-right"><img src="images/right-arrow.png"></div><div style="clear:both;"></div></div>';
+									html += '<div class="new-order-content-bottem"><div class="new-order-content-bottem-left">￥' + orderList[i].realPrice + '</div>';
+									html += '<div class="new-order-content-bottem-right">订单状态：<span>' + orderList[i].orderStateName + '</span></div>';
+									html += '<div style="clear:both;"></div></div></div></a></li>';
+								}
+								$("#wrapper ul").append(html);
+							} else {
+								maxPageNo = generatedCount;
+							}
+						} else {
+							meibao_alert(data.message);
+						}
+					});
+					wrapper.refresh(); /****remember to refresh after action completed！！！   ---id.refresh(); --- ****/
+				}, 1000);
+			} else {
+				wrapper.refresh();
+			}
 		}
 	</script>
 
