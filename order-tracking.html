@@ -19,7 +19,9 @@
 
 	<body>
 		<div id="header">
-			<a href="javascript:history.go(-1)"><img src="images/left-arrow.png" class="left-arrow"></a>订单查询</div>
+			<a href="javascript:history.go(-1)">
+				<div class="back"><img src="images/left-arrow.png" class="left-arrow"></div>
+			</a>订单查询</div>
 		<ul class="menu">
 			<li>
 				<a href="all-orders.html">全部订单</a>
@@ -30,7 +32,7 @@
 			</li>
 		</ul>
 		<div class="search-input">
-			<input type="text" class="order-search" />
+			<input type="text" class="order-search" id="keyword" />
 			<p>可以搜索订单编号、或商品名称、或买家姓名、或买家电话 任意一种进行搜索</p>
 		</div>
 		<div class="choose-date-title">日期选择</div>
@@ -50,7 +52,6 @@
 		</div>
 		<button class="start-search">开始搜索</button>
 	</body>
-	<script src="js/jquery.min.js"></script>
 	<script src="js/mobiscroll_date.js" charset="UTF-8"></script>
 	<script src="js/mobiscroll.js"></script>
 	<script type="text/javascript">
@@ -74,18 +75,25 @@
 				lang: 'zh',
 				showNow: true,
 				nowText: "今天",
-				width: 130,
-				height: 72,
+				/*width: 130,
+				height: 72,*/
 				startYear: year - 10, //开始年份
 				endYear: year //结束年份
 			};
 
 			$("#start").mobiscroll($.extend(opt['date'], opt['default']));
 			$("#end").mobiscroll($.extend(opt['date'], opt['default']));
-			$("#start").scroller('setDate', new Date(), true);
-			$("#end").scroller('setDate', new Date(), true);
+			//$("#start").scroller('setDate', new Date(), true);
+			//$("#end").scroller('setDate', new Date(), true);
 			//$("#start").val(new Date().Format("yyyy年MM月dd日"));
 			//$("#end").val(new Date().Format("yyyy年MM月dd日"));
+		});
+	</script>
+	<script type="text/javascript">
+		$(".start-search").click(function() {
+			var start = $("#start").val().replace('年', '-').replace('月', '-').replace('日', '');
+			var end = $("#end").val().replace('年', '-').replace('月', '-').replace('日', '');
+			window.location.href = "search-order-list.html?searchContent=" + $("#keyword").val() + "&beginTime=" + start + "&endTime=" + end;
 		});
 	</script>
 

@@ -1,39 +1,39 @@
 .content {
-	width: calc(100% - 48px);
+	width: calc(100% - 24px);
 	margin: 0 auto;
 }
 
 .enter-number {
-	margin-top: 210px;
-	margin-bottom: 60px;
-	font-size: 36px;
+	margin-top: 105px;
+	margin-bottom: 30px;
+	font-size: 18px;
 }
 
 .tracking-number {
 	margin: 0 auto;
 	width: 100%;
-	height: 88px;
+	height: 44px;
 	border: none;
 	background-color: #DDDDDD;
-	font-size: 32px;
+	font-size: 16px;
 }
 
 .tip {
-	font-size: 24px;
-	margin-top: 40px;
+	font-size: 12px;
+	margin-top: 20px;
 	color: #333333;
-	margin-bottom: 110px;
+	margin-bottom: 55px;
 	text-align: left;
 }
 
 .confirm-delivery {
 	width: 100%;
-	height: 90px;
+	height: 45px;
 	border: none;
 	background-color: #FB7292;
 	border-radius: 10px;
 	color: #fff;
-	font-size: 36px;
+	font-size: 18px;
 	font-weight: 400;
 }
 
@@ -49,8 +49,8 @@
 }
 
 .pop-up {
-	width: calc(100% - 200px);
-	height: 268px;
+	width: calc(100% - 100px);
+	height: 134px;
 	position: fixed;
 	z-index: 99;
 	margin: auto;
@@ -64,19 +64,19 @@
 }
 
 .message {
-	height: 168px;
+	height: 84px;
 	border-bottom: 1px solid #DDDDDD;
-	line-height: 168px;
+	line-height: 84px;
 	color: #333333;
-	font-size: 36px;
+	font-size: 18px;
 	font-weight: 600;
 }
 
 .confirm {
 	height: 100px;
-	line-height: 100px;
+	line-height: 50px;
 	color: #FB7292;
-	font-size: 36px;
+	font-size: 18px;
 	font-weight: 500;
 }
 

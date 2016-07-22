@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html ng-app="order">
 
 	<head>
 		<meta charset="utf-8">
@@ -9,41 +9,52 @@
 		<meta name="format-detection" content="telephone=no, email=no" />
 		<link rel="stylesheet" type="text/css" href="css/new-orders.css" />
 		<link rel="stylesheet" type="text/css" href="css/base.css" />
+		<link rel="stylesheet" type="text/css" href="css/pullToRefresh.css" />
 		<script src="js/jquery.min.js" type="text/javascript" charset="utf-8"></script>
 		<script src="js/base.js" type="text/javascript" charset="utf-8"></script>
 		<script src="js/loading.js" type="text/javascript" charset="utf-8"></script>
+		<script src="js/angular.min.js" type="text/javascript" charset="utf-8"></script>
+		<script src="js/iscroll.js" type="text/javascript" charset="utf-8"></script>
+		<script src="js/pullToRefresh.js" type="text/javascript" charset="utf-8"></script>
 		<title>新增订单</title>
 	</head>
 
 	<body>
 		<div id="header">
-			<a href="javascript:history.go(-1)"><img src="images/left-arrow.png" class="left-arrow"></a>新增订单</div>
-		<div class="new-order-content">
-			<a href="order-details.html">
-				<div class="new-order-content-item">
-					<div class="new-order-content-top">
-						<div class="content-item-left">
-							<img src="images/product.png" />
+			<a href="javascript:history.go(-1)">
+				<div class="back"><img src="images/left-arrow.png" class="left-arrow"></div>
+			</a>新增订单</div>
+		<div class="new-order-content" ng-controller="getOrderList" id="wrapper">
+			<!--ng-href="order-details.html?id={{data.orderId}}"-->
+			<ul>
+				<li ng-repeat="data in data">
+					<a ng-href="order-details.html?id={{data.orderId}}">
+						<div class="new-order-content-item">
+							<div class="new-order-content-top">
+								<div class="content-item-left">
+									<img ng-src="{{data.orderPic}}" />
+								</div>
+								<div class="content-item-center">
+									<div class="content-item-center-top1">订单编号：{{data.orderNumber}}</div>
+									<div class="content-item-center-top2">下单时间：{{data.createTime}}</div>
+									<div class="content-item-center-text ptop10">收货人：{{data.receivedName}}&nbsp;{{data.receivedPhone}}</div>
+									<div class="content-item-center-text">收货地址：{{data.receivedAddress}}</div>
+								</div>
+								<div class="content-item-right">
+									<img src="images/right-arrow.png" />
+								</div>
+								<div style="clear:both;"></div>
+							</div>
+							<div class="new-order-content-bottem">
+								<div class="new-order-content-bottem-left">￥{{data.realPrice}}</div>
+								<div class="new-order-content-bottem-right">订单状态：<span>{{data.orderStateName}}</span></div>
+								<div style="clear:both;"></div>
+							</div>
 						</div>
-						<div class="content-item-center">
-							<div class="content-item-center-top1">订单编号：JIO8271903999</div>
-							<div class="content-item-center-top2">下单时间：2016-06-29 11:30:19</div>
-							<div class="content-item-center-text ptop10">收货人：张敏&nbsp;13478775664</div>
-							<div class="content-item-center-text">收货地址：广东省广州市白云区云城西路白云绿地中心45层</div>
-						</div>
-						<div class="content-item-right">
-							<img src="images/right-arrow.png" />
-						</div>
-						<div style="clear:both;"></div>
-					</div>
-					<div class="new-order-content-bottem">
-						<div class="new-order-content-bottem-left">￥500</div>
-						<div class="new-order-content-bottem-right">订单状态：<span>待发货</span></div>
-						<div style="clear:both;"></div>
-					</div>
-				</div>
-			</a>
-			<a href="order-details.html">
+					</a>
+				</li>
+			</ul>
+			<!--<a href="order-details.html">
 				<div class="new-order-content-item">
 					<div class="new-order-content-top">
 						<div class="content-item-left">
@@ -66,8 +77,53 @@
 						<div style="clear:both;"></div>
 					</div>
 				</div>
-			</a>
+			</a>-->
 		</div>
 	</body>
+	<script type="text/javascript">
+		if(getcookie("token") != "") {
+			var order = angular.module('order', []);
+			order.controller('getOrderList', function($http, $scope) {
+				$http.get(server + "api/order/serchOrderList?accessToken=" + getcookie("token") + "&queryType=1" + must_send).success(function(data) {
+					if(data.code == 0) {
+						$scope.data = data.data;
+					} else {
+						meibao_alert(data.message);
+					}
+				});
+			});
+		} else {
+			window.location.href = "login.html";
+		}
+	</script>
+	<script type="text/javascript">
+		refresher.init({
+			id: "wrapper",
+			pullDownAction: refresh,
+			pullUpAction: loadMore
+		});
+		var generatedCount = 0;
+
+		function refresh() {
+			setTimeout(function() { // <-- Simulate network congestion, remove setTimeout from production!
+				window.location.reload();//刷新页面
+				wrapper.refresh(); /****remember to refresh after  action completed！ ---yourId.refresh(); ----| ****/
+			}, 1000);
+
+		}
+
+		function loadMore() {
+			setTimeout(function() { // <-- Simulate network congestion, remove setTimeout from production!
+				var el, li, i;
+				el = document.querySelector("#wrapper ul");
+				for(i = 0; i < 2; i++) {
+					li = document.createElement('li');
+					li.appendChild(document.createTextNode('async row ' + (++generatedCount)));
+					el.appendChild(li, el.childNodes[0]);
+				}
+				wrapper.refresh(); /****remember to refresh after action completed！！！   ---id.refresh(); --- ****/
+			}, 1000);
+		}
+	</script>
 
 </html>

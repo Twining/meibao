@@ -1,14 +1,14 @@
 .content {
-	margin-top: 110px;
+	margin-top: 55px;
 	background-color: #EEEEEE;
 	width: 100%;
 }
 
 .order-infor {
 	background-color: #FFFFFF;
-	padding: 30px 24px;
-	width: calc(100% - 48px);
-	margin-bottom: 20px;
+	padding: 15px 12px;
+	width: calc(100% - 24px);
+	margin-bottom: 10px;
 }
 
 .content1 {
@@ -18,35 +18,35 @@
 
 .number {
 	color: #999999;
-	font-size: 24px;
+	font-size: 14px;
 	text-align: left;
 }
 
 .time {
 	color: #999999;
-	font-size: 24px;
+	font-size: 14px;
 	text-align: left;
-	margin-top: 16px;
-	margin-bottom: 20px;
+	margin-top: 8px;
+	margin-bottom: 10px;
 }
 
 .content2 {
 	border-bottom: 1px solid #DDDDDD;
 	width: 100%;
-	margin-top: 20px;
-	padding-bottom: 20px;
+	margin-top: 10px;
+	padding-bottom: 10px;
 	text-align: left;
-	margin-top: 14px;
-	font-size: 28px;
+	margin-top: 7px;
+	font-size: 14px;
 }
 
 .content4 {
 	border-bottom: 1px solid #DDDDDD;
 	width: 100%;
-	margin-top: 20px;
-	padding-bottom: 20px;
+	margin-top: 10px;
+	padding-bottom: 10px;
 	text-align: left;
-	font-size: 30px;
+	font-size: 15px;
 }
 
 .content4 span {
@@ -54,9 +54,9 @@
 }
 
 .content3 {
-	font-size: 30px;
+	font-size: 15px;
 	text-align: left;
-	margin-top: 20px;
+	margin-top: 10px;
 }
 
 .content3 span {
@@ -65,32 +65,32 @@
 
 .order-products {
 	background-color: #FFFFFF;
-	padding: 0px 24px;
+	padding: 0px 12px;
 }
 
 .order-product {
-	padding-top: 30px;
+	padding-top: 15px;
 	width: calc(100%);
 	border-bottom: 1px solid #DDDDDD;
-	padding-bottom: 30px;
+	padding-bottom: 15px;
 }
 
 .order-product-left {
 	float: left;
-	padding-right: 30px;
+	padding-right: 15px;
 	width: 25%;
 }
 
 .order-product-left img {
-	width: 180px;
-	height: 180px;
+	width: 90px;
+	height: 90px;
 }
 
 .order-product-center {
 	float: left;
 	width: 65%;
 	text-align: left;
-	font-size: 30px;
+	font-size: 15px;
 	color: #333333;
 }
 
@@ -99,36 +99,36 @@
 }
 
 .order-product-right img {
-	height: 32px;
+	height: 16px;
 }
 
 .product-price {
-	margin-bottom: 20px;
+	margin-bottom: 10px;
 }
 
 .order-money {
 	text-align: right;
-	font-size: 30px;
+	font-size: 15px;
 	color: #333333;
-	padding-top: 30px;
-	padding-bottom: 30px;
-	margin-bottom: 20px;
+	padding-top: 15px;
+	padding-bottom: 15px;
+	margin-bottom: 10px;
 }
 
 .footer {
-	padding: 30px 24px;
-	width: calc(100% - 48px);
+	padding: 15px 12px;
+	width: calc(100% - 24px);
 	background-color: #FFFFFF;
 }
 
 .confirm-order {
 	width: 100%;
-	height: 90px;
+	height: 45px;
 	border: none;
 	background-color: #FB7292;
 	border-radius: 10px;
 	color: #fff;
-	font-size: 36px;
+	font-size: 18px;
 	font-weight: 400;
 }
 
@@ -149,7 +149,7 @@ button {
 
 .pop-up {
 	width: calc(100% - 24px);
-	height: 312px;
+	height: 156px;
 	position: fixed;
 	z-index: 99;
 	margin: auto;
@@ -161,29 +161,29 @@ button {
 }
 
 .message {
-	height: 88px;
-	border-bottom: 2px solid #999999;
-	line-height: 88px;
+	height: 44px;
+	border-bottom: 1px solid #999999;
+	line-height: 44px;
 	color: #666666;
-	font-size: 30px;
+	font-size: 15px;
 	background-color: #FFFFFF;
 }
 
 .mobile {
-	height: 88px;
-	line-height: 88px;
+	height: 44px;
+	line-height: 44px;
 	color: #333333;
-	font-size: 36px;
+	font-size: 18px;
 	background-color: #FFFFFF;
 }
 
 .confirm {
-	height: 88px;
-	line-height: 88px;
+	height: 44px;
+	line-height: 44px;
 	color: #FB7292;
-	font-size: 36px;
+	font-size: 18px;
 	font-weight: 500;
-	margin: 24px auto;
+	margin: 12px auto;
 	background-color: #FFFFFF;
 	border-radius: 10px;
 }

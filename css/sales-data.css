@@ -1,14 +1,14 @@
 .time-today {
-	margin-top: 90px;
-	height: 64px;
+	margin-top: 45px;
+	height: 32px;
 	color: #666666;
-	font-size: 24px;
-	line-height: 64px;
+	font-size: 12px;
+	line-height: 32px;
 }
 
 .data {
-	padding-top: 60px;
-	padding-bottom: 60px;
+	padding-top: 30px;
+	padding-bottom: 30px;
 	width: 100%;
 	background-color: #FFFFFF;
 }
@@ -21,23 +21,23 @@
 }
 
 .total-sales img {
-	width: 60px;
-	height: 60px;
+	width: 30px;
+	height: 30px;
 }
 
 .total-sales .text {
-	font-size: 34px;
-	margin-top: 10px;
+	font-size: 17px;
+	margin-top: 5px;
 }
 
 .total-sales .total {
-	font-size: 36px;
+	font-size: 18px;
 	color: #FD363B;
-	margin-top: 30px;
+	margin-top: 15px;
 }
 
 .total-sales .total span {
-	font-size: 48px;
+	font-size: 24px;
 }
 
 .today-visitors {
@@ -46,29 +46,29 @@
 }
 
 .today-visitors img {
-	width: 80px;
-	height: 80px;
+	width: 40px;
+	height: 40px;
 }
 
 .today-visitors .text {
-	font-size: 34px;
-	margin-top: 10px;
+	font-size: 17px;
+	margin-top: 5px;
 }
 
 .today-visitors .total {
-	font-size: 48px;
+	font-size: 24px;
 	color: #FD363B;
-	margin-top: 30px;
+	margin-top: 15px;
 }
 
 .today-visitors .total span {
-	font-size: 36px;
+	font-size: 18px;
 	color: #666666;
 }
 
 .order {
-	padding-top: 40px;
-	padding-bottom: 40px;
+	padding-top: 20px;
+	padding-bottom: 20px;
 	width: 100%;
 	background-color: #F5F5F5;
 }
@@ -79,17 +79,17 @@
 }
 
 .order-data-item .text {
-	font-size: 30px;
+	font-size: 15px;
 	color: #666666;
 }
 
 .order-data-item .total {
-	margin-top: 20px;
-	font-size: 36px;
+	margin-top: 10px;
+	font-size: 18px;
 }
 
 .order-data-item .text span {
-	font-size: 30px;
+	font-size: 15px;
 }
 
 .withdraw-content {
@@ -98,12 +98,12 @@
 }
 
 .withdraw {
-	width: calc(100% - 48px);
+	width: calc(100% - 24px);
 	margin: 0 auto;
 }
 
 .withdraw1 {
-	padding: 20px 0px;
+	padding: 10px 0px;
 	width: 60%;
 	float: left;
 	text-align: left;
@@ -122,40 +122,43 @@
 }
 
 .withdraw1-1 {
-	font-size: 30px;
+	font-size: 15px;
 }
 
 .withdraw1-2 {
-	margin-top: 20px;
-	font-size: 36px;
+	margin-top: 10px;
+	font-size: 18px;
 	color: #FD363B;
 }
 
 .withdraw2 button {
-	font-size: 28px;
+	font-size: 14px;
 	outline: none;
-	border: 4px solid #FB7292;
+	border: 2px solid #FB7292;
 	background-color: #FFFFFF;
-	border-radius: 50px;
+	border-radius: 25px;
 	color: #FB7292;
-	margin-top: 54px;
-	margin-bottom: 54px;
-	height: 80px;
-	width: 200px;
+	margin-top: 27px;
+	margin-bottom: 27px;
+	height: 40px;
+	line-height: 34px;
+	width: 100px;
 }
 
 .withdraw3 button {
-	font-size: 28px;
+	font-size: 14px;
 	outline: none;
-	border: 4px solid #B9B9B9;
+	border: 2px solid #B9B9B9;
 	background-color: #FFFFFF;
-	border-radius: 50px;
+	border-radius: 25px;
 	color: #B9B9B9;
-	margin-top: 54px;
-	margin-bottom: 54px;
-	height: 80px;
-	width: 200px;
+	margin-top: 27px;
+	margin-bottom: 27px;
+	height: 40px;
+	line-height: 34px;
+	width: 100px;
 }
+
 .mask {
 	width: 100%;
 	height: 100%;
@@ -168,8 +171,8 @@
 }
 
 .pop-up {
-	width: calc(100% - 200px);
-	height: 268px;
+	width: calc(100% - 100px);
+	height: 134px;
 	position: fixed;
 	z-index: 99;
 	margin: auto;
@@ -181,43 +184,46 @@
 	border-radius: 10px;
 	display: none;
 }
-.alert-message{
-	height: 168px;
+
+.alert-message {
+	height: 84px;
 }
-.title{
-	font-size: 36px;
-	padding-top: 40px;
-	padding-bottom: 22px;
-	line-height: 40px;
+
+.title {
+	font-size: 18px;
+	padding-top: 20px;
+	padding-bottom: 11px;
+	line-height: 20px;
 	font-weight: 600;
 }
+
 .message {
 	/*height: 168px;*/
 	border-bottom: 1px solid #DDDDDD;
 	/*line-height: 168px;*/
 	color: #333333;
-	padding-bottom: 35px;
-	line-height: 30px;
-	font-size: 22px;
+	padding-bottom: 18px;
+	line-height: 15px;
+	font-size: 11px;
 	/*box-sizing: border-box;*/
 }
 
 .confirm {
 	/*height: 100px;*/
-	line-height: 100px;
+	line-height: 50px;
 	color: #FB7292;
-	font-size: 36px;
+	font-size: 18px;
 	font-weight: 500;
 }
 
-.cancel{
+.cancel {
 	width: 50%;
 	float: left;
 	border-right: 1px solid #DDDDDD;
 	box-sizing: border-box;
 }
 
-.go-on{
+.go-on {
 	width: 50%;
 	float: left;
 }

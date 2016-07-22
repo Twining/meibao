@@ -15,6 +15,7 @@ if(document.documentElement.clientWidth > 375 && dpr < 2) {
 if(document.documentElement.clientWidth > 375 && dpr > 2) {
 	dpr = 2;
 }
+dpr = 1;
 var _PageHeight = document.documentElement.clientHeight * dpr,
 	_PageWidth = document.documentElement.clientWidth * dpr;
 //计算loading框距离顶部和左部的距离（loading框的宽度为215px，高度为61px）

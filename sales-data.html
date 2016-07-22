@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html ng-app="saladata">
 
 	<head>
 		<meta charset="utf-8">
@@ -12,34 +12,37 @@
 		<script src="js/jquery.min.js" type="text/javascript" charset="utf-8"></script>
 		<script src="js/base.js" type="text/javascript" charset="utf-8"></script>
 		<script src="js/loading.js" type="text/javascript" charset="utf-8"></script>
+		<script src="js/angular.min.js" type="text/javascript" charset="utf-8"></script>
 		<title>今日销售</title>
 	</head>
 
-	<body>
+	<body ng-controller="getSaleData">
 		<div id="header">
-			<a href="javascript:history.go(-1)"><img src="images/left-arrow.png" class="left-arrow"></a>今日销售</div>
+			<a href="javascript:history.go(-1)">
+				<div class="back"><img src="images/left-arrow.png" class="left-arrow"></div>
+			</a>今日销售</div>
 		<div class="time-today" id="today"></div>
 		<div class="data">
 			<div class="total-sales">
 				<img src="images/sales.png" />
 				<div class="text">总销售额</div>
-				<div class="total">￥<span>1300</span></div>
+				<div class="total">￥<span>{{data.totalSales}}</span></div>
 			</div>
 			<div class="today-visitors">
 				<img src="images/visitors.png" />
 				<div class="text">今日访问人数</div>
-				<div class="total">160<span>人</span></div>
+				<div class="total">{{data.visitorCount}}<span>人</span></div>
 			</div>
 			<div style="clear: both;"></div>
 		</div>
 		<div class="order">
 			<div class="order-data-item">
 				<div class="text">总订单数量</div>
-				<div class="total">34<span>单</span></div>
+				<div class="total">{{data.totalOrderNumber}}<span>单</span></div>
 			</div>
 			<div class="order-data-item">
 				<div class="text">本月平均订单数量</div>
-				<div class="total">25<span>单</span></div>
+				<div class="total">{{data.averageOrderNumber}}<span>单</span></div>
 			</div>
 			<div style="clear: both;"></div>
 		</div>
@@ -47,7 +50,7 @@
 			<div class="withdraw" style="border-bottom: 1px solid #DDDDDD;">
 				<div class="withdraw1">
 					<div class="withdraw1-1">可提现金额</div>
-					<div class="withdraw1-2">￥2500</div>
+					<div class="withdraw1-2">￥{{data.withdrawalAmount}}</div>
 				</div>
 				<div class="withdraw2">
 					<button onclick="withdraw()">申请提现</button>
@@ -57,7 +60,7 @@
 			<div class="withdraw">
 				<div class="withdraw1">
 					<div class="withdraw1-1">提现中的总金额</div>
-					<div class="withdraw1-2">￥500</div>
+					<div class="withdraw1-2">￥{{data.totalWithdrawalAmount}}</div>
 				</div>
 				<div class="withdraw3">
 					<a href="withdraw-details.html"><button>查看详情</button></a>
@@ -71,7 +74,7 @@
 					<div class="message">提现金额将在XX日内汇往您的银行账户</div>
 				</div>
 				<div class="confirm">
-					<div class="cancel" onclick="hide()">取消</div>
+					<div class="cancel" onclick="cancel()">取消</div>
 					<div class="go-on" onclick="apply_immediately()">立即申请</div>
 					<div style="clear:both;"></div>
 				</div>
@@ -104,9 +107,28 @@
 			$(".pop-up").show();
 		}
 
+		function cancel() {
+			$(".mask").hide();
+			$(".pop-up").hide();
+		}
+
 		function apply_immediately() {
-			hide();
+			cancel();
 			window.location.href = "withdraw-details.html";
+		}
+		if(getcookie("token") != "") {
+			var saladata = angular.module('saladata', []);
+			saladata.controller('getSaleData', function($http, $scope) {
+				$http.get(server + "api/order/getSalesDate?accessToken=" + getcookie("token") + must_send).success(function(data) {
+					if(data.code == 0) {
+						$scope.data = data.data;
+					} else {
+						meibao_alert(data.message);
+					}
+				});
+			});
+		} else {
+			window.location.href = "login.html";
 		}
 	</script>
 

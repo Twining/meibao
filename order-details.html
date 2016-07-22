@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html ng-app="details">
 
 	<head>
 		<meta charset="utf-8">
@@ -10,65 +10,160 @@
 		<title>订单详情</title>
 		<link rel="stylesheet" type="text/css" href="css/order-details.css" />
 		<link rel="stylesheet" type="text/css" href="css/base.css" />
+		<link rel="stylesheet" type="text/css" href="css/pullToRefresh.css" />
+
 		<script src="js/jquery.min.js" type="text/javascript" charset="utf-8"></script>
 		<script src="js/base.js" type="text/javascript" charset="utf-8"></script>
 		<script src="js/loading.js" type="text/javascript" charset="utf-8"></script>
+		<script src="js/angular.min.js" type="text/javascript" charset="utf-8"></script>
+		<script src="js/iscroll.js" type="text/javascript" charset="utf-8"></script>
+		<script src="js/pullToRefresh.js" type="text/javascript" charset="utf-8"></script>
 	</head>
 
-	<body>
-		<div id="header">
-			<a href="javascript:history.go(-1)"><img src="images/left-arrow.png" class="left-arrow"></a>订单详情</div>
-		<div class="content">
-			<div class="order-infor">
-				<div class="content1">
-					<div class="number">订单编号：JIO8271903999</div>
-					<div class="time">下单时间：2016-06-29 11:30:19</div>
+	<body ng-controller="getOrderDetails" ng-switch="orderState">
+		<div ng-switch-default>
+			<div id="header">
+				<a href="javascript:history.go(-1)">
+					<div class="back"><img src="images/left-arrow.png" class="left-arrow"></div>
+				</a>订单详情</div>
+			<div class="content">
+				<div class="order-infor">
+					<div class="content1">
+						<div class="number">订单编号：{{data.orderNumber}}</div>
+						<div class="time">下单时间：{{data.createTime}}</div>
+					</div>
+					<div class="content2">
+						<div class="person">收货人：{{data.receivedName}}&nbsp;{{data.receivedPhone}}</div>
+						<div class="address">收货地址：{{data.receivedAddress}}</div>
+					</div>
+					<div class="content3">订单状态：<span>{{data.orderStateName}}</span></div>
 				</div>
-				<div class="content2">
-					<div class="person">收货人：张敏&nbsp;13478775664</div>
-					<div class="address">收货地址：广东省广州市白云区云城西路白云绿地中心45层</div>
+				<div class="order-products">
+					<div class="order-product" ng-repeat="product in data.productDetailVo">
+						<div class="order-product-left">
+							<img ng-src="{{product.pic}}" />
+						</div>
+						<div class="order-product-center">
+							<div class="product-name">{{product.name}}</div>
+							<div class="product-price">￥{{product.sellPrice}}</div>
+							<div class="product-num">购买数量：{{product.transactionNum}}</div>
+						</div>
+						<div class="order-product-right">
+							<img src="images/right-arrow.png" />
+						</div>
+						<div style="clear:both;"></div>
+					</div>
+					<div class="order-money">
+						<div class="money-1">商品金额：￥{{data.productPrice}}</div>
+						<div class="money-2">运费：￥{{data.freightPrice}}</div>
+						<div class="money-3">订单实收金额：￥{{data.realPrice}}</div>
+					</div>
 				</div>
-				<div class="content3">订单状态：<span>待发货</span></div>
 			</div>
-			<div class="order-products">
-				<div class="order-product">
-					<div class="order-product-left">
-						<img src="images/product.png" />
-					</div>
-					<div class="order-product-center">
-						<div class="product-name">芭比波朗清润舒盈洁肤油 温和植物卸妆油 75ml </div>
-						<div class="product-price">￥500</div>
-						<div class="product-num">购买数量：1</div>
-					</div>
-					<div class="order-product-right">
-						<img src="images/right-arrow.png" />
-					</div>
-					<div style="clear:both;"></div>
+			<div ng-switch="orderState">
+				<div class="footer" ng-switch-when="4">
+					<a ng-href="confirm-delivery.html?id={{data.orderId}}"><button class="confirm-order">确认订单</button></a>
 				</div>
-				<div class="order-product">
-					<div class="order-product-left">
-						<img src="images/product1.png" />
-					</div>
-					<div class="order-product-center">
-						<div class="product-name">芭比波朗莹采润泽妆前隔离乳 防晒保湿 珍珠美白</div>
-						<div class="product-price">￥450</div>
-						<div class="product-num">购买数量：1</div>
-					</div>
-					<div class="order-product-right">
-						<img src="images/right-arrow.png" />
-					</div>
-					<div style="clear:both;"></div>
-				</div>
-				<div class="order-money">
-					<div class="money-1">商品金额：￥950</div>
-					<div class="money-2">运费：￥0</div>
-					<div class="money-3">订单实收金额：￥950</div>
+				<div class="footer" ng-switch-when="6">
+					<a href="confirm-delivery.html"><button class="confirm-order">查看物流</button></a>
 				</div>
 			</div>
 		</div>
-		<div class="footer">
-			<a href="confirm-delivery.html"><button class="confirm-order">确认订单</button></a>
+		<!--</div>-->
+		</div>
+		<div ng-switch-when="9">
+			<div id="header">
+				<a href="javascript:history.go(-1)">
+					<div class="back"><img src="images/left-arrow.png" class="left-arrow"></div>
+				</a>订单详情</div>
+			<div class="content">
+				<div class="order-infor">
+					<div class="content1">
+						<div class="number">订单编号：{{data.orderNumber}}</div>
+						<div class="time">下单时间：{{data.createTime}}</div>
+					</div>
+					<div class="content4">
+						<div style="font-size: 14px">申请售后时间：{{data.applyForAfterSaleTime}}</div>
+						<div>剩余处理时间：<span id="countdown">{{data.applyForAfterSaleEndTime}}</span><span>（倒计时）</span></div>
+					</div>
+					<div class="content2">
+						<div class="person">收货人：{{data.receivedName}}&nbsp;{{data.receivedPhone}}</div>
+						<div class="address">收货地址：{{data.receivedAddress}}</div>
+					</div>
+					<div class="content3">
+						<div>订单状态：{{data.orderStateName}}</div>
+						<div>申请原因：{{data.applyReason}}</div>
+						<div>详细说明：{{data.applyDetailReason}}</div>
+					</div>
+				</div>
+				<div class="order-products">
+					<div class="order-product" ng-repeat="product in data.productDetailVo">
+						<div class="order-product-left">
+							<img ng-src="{{product.pic}}" />
+						</div>
+						<div class="order-product-center">
+							<div class="product-name">{{product.name}}</div>
+							<div class="product-price">￥{{product.sellPrice}}</div>
+							<div class="product-num">购买数量：{{product.transactionNum}}</div>
+						</div>
+						<div class="order-product-right">
+							<img src="images/right-arrow.png" />
+						</div>
+						<div style="clear:both;"></div>
+					</div>
+					<div class="order-money">
+						<div class="money-1">商品金额：￥{{data.productPrice}}</div>
+						<div class="money-2">运费：￥{{data.freightPrice}}</div>
+						<div class="money-3">订单实收金额：￥{{data.realPrice}}</div>
+					</div>
+				</div>
+			</div>
+			<div class="footer">
+				<button class="confirm-order" onclick="confirm()">联系买家</button>
+			</div>
+			<div class="mask"></div>
+			<div class="pop-up">
+				<div class="message">联系电话</div>
+				<a ng-href="tel:{{data.receivedPhone}}">
+					<div class="mobile">{{data.receivedName}}&nbsp;{{data.receivedPhone}}</div>
+				</a>
+				<div class="confirm" onclick="hide()">知道了</div>
+			</div>
 		</div>
 	</body>
+
+	<script type="text/javascript">
+		var url = window.location;
+		if(getcookie("token") != "") {
+			var details = angular.module('details', []);
+			details.controller('getOrderDetails', function($http, $scope) {
+				$http.get(server + "api/order/serchOrderDetail?accessToken=" + getcookie("token") + "&orderId=" + getUrlParam(url, 'id') + must_send).success(function(data) {
+					if(data.code == 0) {
+						$scope.data = data.data;
+						$scope.orderState = $scope.data.orderState;
+						//alert($scope.data.orderState);
+					} else {
+						meibao_alert(data.message);
+					}
+				});
+			});
+		} else {
+			window.location.href = "login.html";
+		}
+	</script>
+	<script type="text/javascript">
+		function confirm() {
+			$(".mask").show();
+			$(".pop-up").show();
+		}
+
+		function hide() {
+			$(".mask").hide();
+			$(".pop-up").hide();
+		}
+		/*$(".mask").bind("touchmove",function() {
+			hide();
+		})*/
+	</script>
 
 </html>

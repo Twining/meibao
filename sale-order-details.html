@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html ng-app="details">
 
 	<head>
 		<meta charset="utf-8">
@@ -13,47 +13,50 @@
 		<script src="js/jquery.min.js" type="text/javascript" charset="utf-8"></script>
 		<script src="js/base.js" type="text/javascript" charset="utf-8"></script>
 		<script src="js/loading.js" type="text/javascript" charset="utf-8"></script>
+		<script src="js/angular.min.js" type="text/javascript" charset="utf-8"></script>
 	</head>
 
 	<body>
 		<div id="header">
-			<a href="javascript:history.go(-1)"><img src="images/left-arrow.png" class="left-arrow"></a>订单详情</div>
-		<div class="content">
+			<a href="javascript:history.go(-1)">
+				<div class="back"><img src="images/left-arrow.png" class="left-arrow"></div>
+			</a>订单详情</div>
+		<div class="content" ng-controller="getOrderDetails">
 			<div class="order-infor">
 				<div class="content1">
-					<div class="number">订单编号：JIO8271903999</div>
-					<div class="time">下单时间：2016-06-29 11:30:19</div>
+					<div class="number">订单编号：{{data.orderNumber}}</div>
+					<div class="time">下单时间：{{data.createTime}}</div>
 				</div>
 				<div class="content4">
-					<div style="font-size: 24px">申请售后时间：2016-06-30 12:30:11</div>
-					<div>剩余处理时间：<span id="countdown"></span><span>（倒计时）</span></div>
+					<div style="font-size: 14px">申请售后时间：{{data.applyForAfterSaleTime}}</div>
+					<div>剩余处理时间：<span id="countdown">{{data.applyForAfterSaleEndTime}}</span><span>（倒计时）</span></div>
 				</div>
 				<div class="content2">
-					<div class="person">收货人：张敏&nbsp;13478775664</div>
-					<div class="address">收货地址：广东省广州市白云区云城西路白云绿地中心45层</div>
+					<div class="person">收货人：{{data.receivedName}}&nbsp;{{data.receivedPhone}}</div>
+					<div class="address">收货地址：{{data.receivedAddress}}</div>
 				</div>
 				<div class="content3">
-					<div>订单状态：申请售后中</div>
-					<div>申请原因：产品质量问题</div>
-					<div>详细说明：产品到货后不满意，瓶子的盖子缺了个角，还有包装也是像被压过一样的，不敢用！</div>
+					<div>订单状态：{{data.orderStateName}}</div>
+					<div>申请原因：{{data.applyReason}}</div>
+					<div>详细说明：{{data.applyDetailReason}}</div>
 				</div>
 			</div>
 			<div class="order-products">
-				<div class="order-product">
+				<div class="order-product" ng-repeat="product in data.productDetailVo">
 					<div class="order-product-left">
-						<img src="images/product.png" />
+						<img ng-src="{{product.pic}}" />
 					</div>
 					<div class="order-product-center">
-						<div class="product-name">芭比波朗清润舒盈洁肤油 温和植物卸妆油 75ml </div>
-						<div class="product-price">￥500</div>
-						<div class="product-num">购买数量：1</div>
+						<div class="product-name">{{product.name}}</div>
+						<div class="product-price">￥{{product.sellPrice}}</div>
+						<div class="product-num">购买数量：{{product.transactionNum}}</div>
 					</div>
 					<div class="order-product-right">
 						<img src="images/right-arrow.png" />
 					</div>
 					<div style="clear:both;"></div>
 				</div>
-				<div class="order-product">
+				<!--<div class="order-product">
 					<div class="order-product-left">
 						<img src="images/product1.png" />
 					</div>
@@ -66,11 +69,11 @@
 						<img src="images/right-arrow.png" />
 					</div>
 					<div style="clear:both;"></div>
-				</div>
+				</div>-->
 				<div class="order-money">
-					<div class="money-1">商品金额：￥950</div>
-					<div class="money-2">运费：￥0</div>
-					<div class="money-3">订单实收金额：￥950</div>
+					<div class="money-1">商品金额：￥{{data.productPrice}}</div>
+					<div class="money-2">运费：￥{{data.freightPrice}}</div>
+					<div class="money-3">订单实收金额：￥{{data.realPrice}}</div>
 				</div>
 			</div>
 		</div>
@@ -80,37 +83,53 @@
 		<div class="mask"></div>
 		<div class="pop-up">
 			<div class="message">联系电话</div>
-			<a href="tel:13478775664">
-				<div class="mobile">张敏&nbsp;13478775664</div>
+			<a ng-href="tel:{{data.receivedPhone}}">
+				<div class="mobile">{{data.receivedName}}&nbsp;{{data.receivedPhone}}</div>
 			</a>
 			<div class="confirm" onclick="hide()">知道了</div>
 		</div>
 	</body>
 	<script type="text/javascript">
-		function getRTime() {
-			var EndTime = new Date('2016/7/20 10:00:00'); //截止时间 
-			var NowTime = new Date();
-			var t = EndTime.getTime() - NowTime.getTime();
-			/*var d=Math.floor(t/1000/60/60/24); 
-			t-=d*(1000*60*60*24); 
-			var h=Math.floor(t/1000/60/60); 
-			t-=h*60*60*1000; 
-			var m=Math.floor(t/1000/60); 
-			t-=m*60*1000; 
-			var s=Math.floor(t/1000);*/
-			var d = Math.floor(t / 1000 / 60 / 60 / 24);
-			var h = Math.floor(t / 1000 / 60 / 60 % 24);
-			var m = Math.floor(t / 1000 / 60 % 60);
-			var s = Math.floor(t / 1000 % 60);
+		var url = window.location;
+		if(getcookie("token") != "") {
+			var details = angular.module('details', []);
+			details.controller('getOrderDetails', function($http, $scope) {
+				$http.get(server + "api/order/serchOrderDetail?accessToken=" + getcookie("token") + "&orderId=" + getUrlParam(url, 'id') + must_send).success(function(data) {
+					if(data.code == 0) {
+						$scope.data = data.data;
 
-			/*document.getElementById("t_d").innerHTML = d + "天";
-			document.getElementById("t_h").innerHTML = h + "时";
-			document.getElementById("t_m").innerHTML = m + "分";
-			document.getElementById("t_s").innerHTML = s + "秒";*/
-			var time = d + ":" + h + ":" + m + ":" + s;
-			document.getElementById("countdown").innerHTML = time;
+						function getRTime() {
+							var EndTime = new Date($("#countdown").html()); //截止时间 
+							var NowTime = new Date();
+							var t = EndTime.getTime() - NowTime.getTime();
+							/*var d=Math.floor(t/1000/60/60/24); 
+							t-=d*(1000*60*60*24); 
+							var h=Math.floor(t/1000/60/60); 
+							t-=h*60*60*1000; 
+							var m=Math.floor(t/1000/60); 
+							t-=m*60*1000; 
+							var s=Math.floor(t/1000);*/
+							var d = Math.floor(t / 1000 / 60 / 60 / 24);
+							var h = Math.floor(t / 1000 / 60 / 60 % 24);
+							var m = Math.floor(t / 1000 / 60 % 60);
+							var s = Math.floor(t / 1000 % 60);
+
+							/*document.getElementById("t_d").innerHTML = d + "天";
+							document.getElementById("t_h").innerHTML = h + "时";
+							document.getElementById("t_m").innerHTML = m + "分";
+							document.getElementById("t_s").innerHTML = s + "秒";*/
+							var time = d + ":" + h + ":" + m + ":" + s;
+							document.getElementById("countdown").innerHTML = time;
+						}
+						setInterval(getRTime, 1000);
+					} else {
+						meibao_alert(data.message);
+					}
+				});
+			});
+		} else {
+			window.location.href = "login.html";
 		}
-		setInterval(getRTime, 1000);
 	</script>
 	<script type="text/javascript">
 		function confirm() {

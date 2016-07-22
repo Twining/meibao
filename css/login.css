@@ -10,17 +10,17 @@ body {
 
 .close {
 	position: absolute;
-	width: 50px;
-	left: 24px;
-	top: 40px;
+	width: 25px;
+	left: 12px;
+	top: 20px;
 }
 
 .content {
 	width: 90%;
-	width: -moz-calc(100% - 232px);
-	width: -webkit-calc(100% - 232px);
-	width: calc(100% - 232px);
-	height: 365px;
+	width: -moz-calc(100% - 116px);
+	width: -webkit-calc(100% - 116px);
+	width: calc(100% - 116px);
+	height: 185px;
 	position: absolute;
 	margin: auto;
 	left: 0;
@@ -31,7 +31,7 @@ body {
 
 .content input {
 	-webkit-appearance: none;
-	font-size: 32px;
+	font-size: 16px;
 	-webkit-tap-highlight-color: rgba(0, 0, 0, 0);
 	padding: 0;
 }
@@ -44,7 +44,7 @@ input[type=number] {
 	border-bottom-left-radius: 0;
 	border-bottom-right-radius: 0;
 	color: #b9b9b9;
-	font-size: 32px;
+	font-size: 16px;
 }
 
 input:focus {
@@ -52,16 +52,16 @@ input:focus {
 }
 
 .mobile {
-	height: 75px;
+	height: 40px;
 	width: 100%;
-	width: -moz-calc(100% - 70px);
-	width: -webkit-calc(100% - 70px);
-	width: calc(100% - 70px);
+	width: -moz-calc(100% - 40px);
+	width: -webkit-calc(100% - 40px);
+	width: calc(100% - 40px);
 	background-image: url(../images/mobile.png);
-	background-size: auto 55px;
+	background-size: auto 35px;
 	background-repeat: no-repeat;
 	background-position: 0px 0px;
-	padding-left: 70px !important;
+	padding-left: 40px !important;
 }
 
 .code {
@@ -69,34 +69,34 @@ input:focus {
 }
 
 .input-code {
-	height: 70px;
+	height: 35px;
 	float: left;
 	width: 59%;
-	width: -moz-calc(59% - 70px);
-	width: -webkit-calc(59% - 70px);
-	width: calc(59% - 70px);
+	width: -moz-calc(59% - 40px);
+	width: -webkit-calc(59% - 40px);
+	width: calc(59% - 40px);
 	background-image: url(../images/code.png);
-	background-size: auto 60px;
+	background-size: auto 30px;
 	background-repeat: no-repeat;
 	background-position: 0px 0px;
-	padding-left: 70px !important;
-	margin-top: 62px;
+	padding-left: 40px !important;
+	margin-top: 30px;
 }
 
 .send-code {
 	width: 40%;
 	float: right;
 	background-color: #fff9f9;
-	border: 2px solid #B9B9B9;
-	border-radius: 20px;
-	-moz-border-radius: 20px;
-	-webkit-border-radius: 20px;
+	border: 1px solid #B9B9B9;
+	border-radius: 10px;
+	-moz-border-radius: 10px;
+	-webkit-border-radius: 10px;
 	margin-top: 1px;
 	color: #666666;
-	font-size: 28px;
+	font-size: 14px;
 	opacity: 0.5;
-	margin-top: 48px;
-	height: 80px;
+	margin-top: 25px;
+	height: 40px;
 }
 
 #login {
@@ -104,17 +104,17 @@ input:focus {
 	width: 100%;
 	/*background-color: #dbd4d3;*/
 	background-color: #FB7292;
-	border-radius: 20px;
-	-moz-border-radius: 20px;
-	-webkit-border-radius: 20px;
+	border-radius: 10px;
+	-moz-border-radius: 10px;
+	-webkit-border-radius: 10px;
 	color: #fff;
-	font-size: 36px;
-	height: 92px;
-	margin-top: 60px;
+	font-size: 18px;
+	height: 46px;
+	margin-top: 30px;
 }
 
 .mb20 {
-	margin-bottom: 40px;
+	margin-bottom: 20px;
 }
 
 .mask {
@@ -129,8 +129,8 @@ input:focus {
 }
 
 .pop-up {
-	width: calc(100% - 200px);
-	height: 268px;
+	width: calc(100% - 100px);
+	height: 134px;
 	position: fixed;
 	z-index: 99;
 	margin: auto;
@@ -144,11 +144,11 @@ input:focus {
 }
 
 .message {
-	height: 168px;
+	height: 84px;
 	border-bottom: 1px solid #DDDDDD;
 	/*line-height: 168px;*/
 	color: #333333;
-	font-size: 36px;
+	font-size: 18px;
 	font-weight: 600;
 	width: 100%;
 	display: table;
@@ -161,9 +161,9 @@ input:focus {
 
 .confirm {
 	width: 100%;
-	height: 100px;
-	line-height: 100px;
+	height: 50px;
+	line-height: 50px;
 	color: #FB7292;
-	font-size: 36px;
+	font-size: 18px;
 	font-weight: 500;
 }
