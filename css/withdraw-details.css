@@ -1,0 +1,66 @@
+.withdrawal-amount {
+	margin-top: 55px;
+	padding-left: 12px;
+	padding-right: 12px;
+	width: calc(100% - 24px);
+	height: 80px;
+	line-height: 80px;
+	background-color: #FFFFFF;
+}
+
+.withdrawal-amount .text1 {
+	width: 50%;
+	float: left;
+	text-align: left;
+	font-size: 18px;
+}
+
+.withdrawal-amount .text2 {
+	width: 50%;
+	float: left;
+	text-align: right;
+	color: #FD363B;
+	font-size: 24px;
+}
+
+.withdrawal-amount .text2 span {
+	font-size: 18px;
+	padding-right: 7px;
+}
+
+.withdrawal-record {
+	margin-top: 10px;
+	padding-left: 12px;
+	padding-right: 12px;
+	width: calc(100% - 24px);
+	background-color: #FFFFFF;
+}
+
+.withdrawal-record ul {
+	list-style: none;
+	margin: 0;
+	padding: 0;
+}
+
+.withdrawal-record li {
+	width: 100%;
+	font-size: 14px;
+	text-align: left;
+}
+
+.withdrawal-record li:first-child .time {
+	border-top: none;
+}
+
+.withdrawal-record li .time {
+	border-top: 1px solid #DDDDDD;
+	width: 100%;
+	color: #666666;
+	padding-top: 15px;
+	margin-bottom: 10px;
+}
+
+.withdrawal-record li .amount {
+	width: 100%;
+	padding-bottom: 15px;
+}
