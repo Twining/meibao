@@ -1,4 +1,4 @@
-$(document).ready(function() {
+/*$(document).ready(function() {
 	var dpr, rem, scale;
 	dpr = window.devicePixelRatio || 1;
 	rem = document.documentElement.clientWidth * dpr / 10;
@@ -19,9 +19,7 @@ $(document).ready(function() {
 		dpr = 2;
 	}
 	// 5s 4s
-	/*
-	 * if(docEl.clientWidth < 375 && dpr == 2) { dpr = 3; }
-	 */
+	
 	scale = 2 / dpr;
 	var clientWidth = dpr * docEl.clientWidth;
 	// alert(scale+","+dpr+","+docEl.clientWidth);
@@ -44,14 +42,10 @@ $(document).ready(function() {
 	docEl.firstElementChild.appendChild(fontEl);
 	// fontEl.innerHTML = 'html{font-size:' + rem + 'px!important;}';
 	// 给js调用的，某一dpr下rem和px之间的转换函数
-	/*
-	 * window.rem2px = function(v) { v = parseFloat(v); return v * rem; };
-	 * window.px2rem: function(v) { v = parseFloat(v); return v / rem; };
-	 */
 	window.dpr = dpr;
 	window.rem = rem;
 	// alert("scale:" + scale + ",dpr:" + dpr);
-});
+}); */
 
 // 自定义的弹出框提示 message 提示文字
 function meibao_alert(message) {
@@ -77,7 +71,7 @@ $(".mask").click(function() {
 function addcookie(name, value) {
 	// 设置名称为name,值为value的Cookie
 	var expdate = new Date(); // 初始化时间
-	expdate.setTime(expdate.getTime() + 30 * 60 * 60 * 1000 * 24); // 时间
+	expdate.setTime(expdate.getTime() + 365 * 60 * 60 * 1000 * 24); // 时间
 	document.cookie = name + "=" + value + ";expires=" + expdate.toGMTString()
 			+ ";path=/";
 	// 即document.cookie= name+"="+value+";path=/";
@@ -116,8 +110,10 @@ function getUrlParam(url, name) {
 	return items;
 }
 
-//接口服务器地址
+// 接口服务器地址
 var server = "http://192.168.50.198:8081/jiebao-merchant/";
-//var server = "http://192.168.50.189:8080/";
-//必传字段
-var must_send = "&appName=merchantH5&appVersion=1.0&deviceNumber=123456";
+// var server = "http://192.168.50.189:8080/";
+// 必传字段 "&appName=merchantH5&appVersion=1.0&deviceNumber=123456"
+var must_send = getcookie("must_send");
+// H5与Native交互协议
+var nativelogin = "jiebao://init";

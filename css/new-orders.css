@@ -62,7 +62,7 @@
 
 .content-item-center {
 	float: left;
-	width: 65%;
+	width: calc(65% - 15px);
 }
 
 .content-item-center-top1 {
